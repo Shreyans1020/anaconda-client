@@ -35,7 +35,7 @@ def is_installer(filename):
 
     return False
 
-def inspect_package(filename, fileobj):
+def inspect_package(filename, fileobj, *args, **kwargs):
 
     # skip #!/bin/bash
     line = fileobj.readline()
