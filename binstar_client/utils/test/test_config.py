@@ -1,9 +1,10 @@
-from os.path import join
 import os
 import unittest
 import inspect
 import shutil
 import tempfile
+
+from os.path import join
 
 import mock
 
@@ -11,18 +12,6 @@ from binstar_client.utils import config
 
 
 class Test(unittest.TestCase):
-    def test_signature(self):
-        from binstar_client.utils import get_config, set_config
-
-        # make sure that our exported methods have the same interface
-        spec = inspect.getargspec(get_config)
-        self.assertEqual(spec.args, ['user', 'site', 'remote_site'])
-        self.assertEqual(spec.defaults, (True, True, None))
-
-        spec = inspect.getargspec(set_config)
-        self.assertEqual(spec.args, ['data', 'user'])
-        self.assertEqual(spec.defaults, (True,))
-
     def test_merge(self):
         tmpdir = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmpdir)

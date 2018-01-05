@@ -230,13 +230,13 @@ def get_config(remote_site=None, conda_config=False):
 
     conda_anaconda_client_config = None
     if conda_config:
-        log.debug('Getting configuration from conda backend')
+        logger.debug('Getting configuration from conda backend')
         conda_anaconda_client_config = get_anaconda_client_config()
         recursive_update(config, conda_anaconda_client_config)
 
     # If the conda config is not used or if it fails, we revert fo files.
     if conda_anaconda_client_config is None:
-        log.debug('Getting configuration from files')
+        logger.debug('Getting configuration from files')
         file_configs = load_file_configs(SEARCH_PATH)
         for fn in file_configs:
             recursive_update(config, file_configs[fn])
