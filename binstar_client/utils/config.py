@@ -253,3 +253,23 @@ def save_config(data, config_file):
 def set_config(data, user=True):
     warnings.warn('Use save_config instead of set_config', DeprecationWarning)
     save_config(data, USER_CONFIG if user else SYSTEM_CONFIG)
+
+
+def get_binstar(args=None, cls=None):
+    """
+    DEPRECATED METHOD,
+
+    use `get_server_api`
+    """
+
+    warnings.warn(
+        'method get_binstar is deprecated, please use `get_server_api`',
+        DeprecationWarning
+    )
+
+    token = getattr(args, 'token', None)
+    log_level = getattr(args, 'log_level', logging.INFO)
+    site = getattr(args, 'site', None)
+
+    aserver_api = get_server_api(token, site, log_level, cls)
+    return aserver_api
